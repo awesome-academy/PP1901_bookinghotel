@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+//Check Admin
+Route::get('/admin', 'HomeController@admin')->middleware('CheckAdmin');
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
