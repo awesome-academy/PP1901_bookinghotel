@@ -39,11 +39,11 @@ class User extends Authenticatable
 
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment', 'user_id');
+        return $this->hasMany('App\Models\Comment', 'id', 'user_id');
     }
 
     public function bookings()
     {
-        return $this->hasMany('App\Models\Booking', 'user_id');
+        return $this->hasMany('App\Models\Booking', 'id', 'user_id');
     }
 }

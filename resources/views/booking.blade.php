@@ -16,11 +16,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <h3 class="mb-5 title_booking">{{ __('Hình thức đặt phòng') }}</h3>
-                    <form action="{{ route('member_booking') }}" method="post">
+                    <form action="{{ route('member_booking') }}" method="post" novalidate>
                         @csrf
 
                         <input type="hidden" class="form-control" name="room_id" value="{{ $rooms['id'] }}">
-                        <input type="hidden" class="form-control" name="status" value="{{ __('Đang chờ xử lý') }}">
+                        <input type="hidden" class="form-control" name="status" value="{{ __('1') }}">
 
                         <div class="row">
                             <div class="col-sm-6 form-group">
@@ -38,12 +38,24 @@
                             <div class="col-sm-6 form-group">
                                 <label class="ip_form">{{ __('Check In') }}</label> <label
                                         class="obligatory">{{ __('*') }}</label>
-                                <input type="date" class="form-control" name="check_in">
+                                <input type="date" value="{{ old('check_in') }}" name="check_in"
+                                       class="form-control @error('check_in') is-invalid @enderror" >
+                                @error('check_in')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>&emsp;{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="col-sm-6 form-group">
                                 <label class="ip_form">{{ __('Check Out') }}</label> <label
                                         class="obligatory">{{ __('*') }}</label>
-                                <input type="date" class="form-control" name="check_out">
+                                <input type="date" name="check_out" value="{{ old('check_out') }}"
+                                       class="form-control @error('check_out') is-invalid @enderror" >
+                                @error('check_out')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>&emsp;{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">

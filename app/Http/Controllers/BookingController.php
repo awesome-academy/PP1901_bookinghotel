@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookingFormRequest;
 use App\Models\Booking;
 use App\Repositories\BookingRoomRepositoryInterface;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +28,7 @@ class BookingController extends Controller
 
     }
 
-    public function member_booking(Request $request)
+    public function member_booking(BookingFormRequest $request)
     {
         $rooms = $this->bookingroomRepository->room_id($request);
         if (empty($rooms)) {

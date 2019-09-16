@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     //
+
+
     public function users()
     {
         return $this->belongsTo('App\User', 'user_id');
@@ -16,4 +18,5 @@ class Booking extends Model
     {
         return $this->belongsTo('App\Models\Room', 'id');
     }
+
 }
